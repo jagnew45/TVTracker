@@ -9,6 +9,7 @@ Public Class frmAddShow
     End Sub
 
     Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
+        'Clears the form
         txtShowName.Text = ""
         cboAirDay.SelectedIndex = -1
         cboAirStatus.SelectedIndex = -1
