@@ -42,7 +42,6 @@ Partial Class frmAddShow
         Me.lblIMDB = New System.Windows.Forms.Label()
         Me.txtIMDBID = New System.Windows.Forms.TextBox()
         Me.dtpFinale = New System.Windows.Forms.DateTimePicker()
-        Me.dtpReturn = New System.Windows.Forms.DateTimePicker()
         Me.cboWatchStat = New System.Windows.Forms.ComboBox()
         Me.cboAirDay = New System.Windows.Forms.ComboBox()
         Me.cboAirStatus = New System.Windows.Forms.ComboBox()
@@ -56,6 +55,15 @@ Partial Class frmAddShow
         Me.btnAdd = New System.Windows.Forms.Button()
         Me.btnClear = New System.Windows.Forms.Button()
         Me.lblProceed = New System.Windows.Forms.Label()
+        Me.radFinDateNo = New System.Windows.Forms.RadioButton()
+        Me.radFinDateYes = New System.Windows.Forms.RadioButton()
+        Me.radRetDateNo = New System.Windows.Forms.RadioButton()
+        Me.radRetDateYes = New System.Windows.Forms.RadioButton()
+        Me.dtpReturn = New System.Windows.Forms.DateTimePicker()
+        Me.panRetDate = New System.Windows.Forms.Panel()
+        Me.panFinDate = New System.Windows.Forms.Panel()
+        Me.panRetDate.SuspendLayout()
+        Me.panFinDate.SuspendLayout()
         Me.SuspendLayout()
         '
         'lblMainHeading
@@ -148,7 +156,7 @@ Partial Class frmAddShow
         '
         Me.lblNetwork.BackColor = System.Drawing.SystemColors.Control
         Me.lblNetwork.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lblNetwork.Location = New System.Drawing.Point(60, 330)
+        Me.lblNetwork.Location = New System.Drawing.Point(60, 324)
         Me.lblNetwork.Name = "lblNetwork"
         Me.lblNetwork.Size = New System.Drawing.Size(131, 20)
         Me.lblNetwork.TabIndex = 20
@@ -159,7 +167,7 @@ Partial Class frmAddShow
         '
         Me.lblStreamServ.BackColor = System.Drawing.SystemColors.Control
         Me.lblStreamServ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lblStreamServ.Location = New System.Drawing.Point(60, 387)
+        Me.lblStreamServ.Location = New System.Drawing.Point(60, 376)
         Me.lblStreamServ.Name = "lblStreamServ"
         Me.lblStreamServ.Size = New System.Drawing.Size(131, 20)
         Me.lblStreamServ.TabIndex = 21
@@ -214,29 +222,29 @@ Partial Class frmAddShow
         '
         Me.lblRetDate.BackColor = System.Drawing.SystemColors.Control
         Me.lblRetDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lblRetDate.Location = New System.Drawing.Point(434, 329)
+        Me.lblRetDate.Location = New System.Drawing.Point(14, 12)
         Me.lblRetDate.Name = "lblRetDate"
         Me.lblRetDate.Size = New System.Drawing.Size(131, 20)
         Me.lblRetDate.TabIndex = 27
-        Me.lblRetDate.Text = "Return Date"
+        Me.lblRetDate.Text = "Return Date Known?"
         Me.lblRetDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'lblFinaleDate
         '
         Me.lblFinaleDate.BackColor = System.Drawing.SystemColors.Control
         Me.lblFinaleDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lblFinaleDate.Location = New System.Drawing.Point(434, 386)
+        Me.lblFinaleDate.Location = New System.Drawing.Point(14, 9)
         Me.lblFinaleDate.Name = "lblFinaleDate"
         Me.lblFinaleDate.Size = New System.Drawing.Size(131, 20)
         Me.lblFinaleDate.TabIndex = 28
-        Me.lblFinaleDate.Text = "Finale Date"
+        Me.lblFinaleDate.Text = "Finale Date Known?"
         Me.lblFinaleDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'lblWatchStat
         '
         Me.lblWatchStat.BackColor = System.Drawing.SystemColors.Control
         Me.lblWatchStat.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lblWatchStat.Location = New System.Drawing.Point(434, 442)
+        Me.lblWatchStat.Location = New System.Drawing.Point(434, 323)
         Me.lblWatchStat.Name = "lblWatchStat"
         Me.lblWatchStat.Size = New System.Drawing.Size(131, 20)
         Me.lblWatchStat.TabIndex = 29
@@ -248,7 +256,7 @@ Partial Class frmAddShow
         Me.lblIMDB.AccessibleRole = System.Windows.Forms.AccessibleRole.None
         Me.lblIMDB.BackColor = System.Drawing.SystemColors.Control
         Me.lblIMDB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lblIMDB.Location = New System.Drawing.Point(60, 443)
+        Me.lblIMDB.Location = New System.Drawing.Point(60, 419)
         Me.lblIMDB.Name = "lblIMDB"
         Me.lblIMDB.Size = New System.Drawing.Size(131, 20)
         Me.lblIMDB.TabIndex = 22
@@ -257,7 +265,7 @@ Partial Class frmAddShow
         '
         'txtIMDBID
         '
-        Me.txtIMDBID.Location = New System.Drawing.Point(210, 443)
+        Me.txtIMDBID.Location = New System.Drawing.Point(210, 419)
         Me.txtIMDBID.MaxLength = 9
         Me.txtIMDBID.Name = "txtIMDBID"
         Me.txtIMDBID.Size = New System.Drawing.Size(174, 20)
@@ -265,26 +273,21 @@ Partial Class frmAddShow
         '
         'dtpFinale
         '
-        Me.dtpFinale.Location = New System.Drawing.Point(580, 384)
+        Me.dtpFinale.CustomFormat = ""
+        Me.dtpFinale.Location = New System.Drawing.Point(55, 91)
         Me.dtpFinale.Name = "dtpFinale"
         Me.dtpFinale.Size = New System.Drawing.Size(200, 20)
         Me.dtpFinale.TabIndex = 13
-        '
-        'dtpReturn
-        '
-        Me.dtpReturn.Location = New System.Drawing.Point(580, 327)
-        Me.dtpReturn.Name = "dtpReturn"
-        Me.dtpReturn.Size = New System.Drawing.Size(200, 20)
-        Me.dtpReturn.TabIndex = 12
+        Me.dtpFinale.Visible = False
         '
         'cboWatchStat
         '
         Me.cboWatchStat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboWatchStat.FormattingEnabled = True
         Me.cboWatchStat.Items.AddRange(New Object() {"Watching", "Not Watching"})
-        Me.cboWatchStat.Location = New System.Drawing.Point(580, 441)
+        Me.cboWatchStat.Location = New System.Drawing.Point(580, 322)
         Me.cboWatchStat.Name = "cboWatchStat"
-        Me.cboWatchStat.Size = New System.Drawing.Size(120, 21)
+        Me.cboWatchStat.Size = New System.Drawing.Size(132, 21)
         Me.cboWatchStat.TabIndex = 14
         '
         'cboAirDay
@@ -322,7 +325,7 @@ Partial Class frmAddShow
         Me.cboNetwork.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboNetwork.FormattingEnabled = True
         Me.cboNetwork.Items.AddRange(New Object() {"ABC", "ABC (Aus)", "ABC Family", "Adult Swim", "Amazon", "AMC", "BBC", "BBC America", "Bravo", "Cartoon Network", "CBS", "CMT", "Comedy Central", "CW", "DirecTV", "Disney Channel", "FOX", "Fuji TV", "FX", "FXX", "HBO", "Hulu", "JST", "MTV", "NBC", "Netflix", "Nickelodeon", "PBS", "Showtime", "Spike", "Starz", "TBS", "USA", "Yahoo!", "*Unknown*"})
-        Me.cboNetwork.Location = New System.Drawing.Point(210, 330)
+        Me.cboNetwork.Location = New System.Drawing.Point(210, 324)
         Me.cboNetwork.Name = "cboNetwork"
         Me.cboNetwork.Size = New System.Drawing.Size(174, 21)
         Me.cboNetwork.TabIndex = 5
@@ -332,7 +335,7 @@ Partial Class frmAddShow
         Me.cboStreamServ.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboStreamServ.FormattingEnabled = True
         Me.cboStreamServ.Items.AddRange(New Object() {"Amazon", "Amazon Prime", "CBS", "Disney XD", "FOX", "FXX", "HBO", "HBO Now", "Hulu", "iView?", "Netflix", "Starz", "Vudu", "Yahoo!", "*Unknown*", "YouTube"})
-        Me.cboStreamServ.Location = New System.Drawing.Point(210, 387)
+        Me.cboStreamServ.Location = New System.Drawing.Point(210, 376)
         Me.cboStreamServ.Name = "cboStreamServ"
         Me.cboStreamServ.Size = New System.Drawing.Size(174, 21)
         Me.cboStreamServ.TabIndex = 6
@@ -342,7 +345,7 @@ Partial Class frmAddShow
         Me.txtCurrSeason.Location = New System.Drawing.Point(580, 134)
         Me.txtCurrSeason.MaxLength = 9
         Me.txtCurrSeason.Name = "txtCurrSeason"
-        Me.txtCurrSeason.Size = New System.Drawing.Size(120, 20)
+        Me.txtCurrSeason.Size = New System.Drawing.Size(132, 20)
         Me.txtCurrSeason.TabIndex = 32
         '
         'txtCurrEpisode
@@ -350,7 +353,7 @@ Partial Class frmAddShow
         Me.txtCurrEpisode.Location = New System.Drawing.Point(580, 180)
         Me.txtCurrEpisode.MaxLength = 9
         Me.txtCurrEpisode.Name = "txtCurrEpisode"
-        Me.txtCurrEpisode.Size = New System.Drawing.Size(120, 20)
+        Me.txtCurrEpisode.Size = New System.Drawing.Size(132, 20)
         Me.txtCurrEpisode.TabIndex = 33
         '
         'txtTotalSeasons
@@ -358,7 +361,7 @@ Partial Class frmAddShow
         Me.txtTotalSeasons.Location = New System.Drawing.Point(580, 227)
         Me.txtTotalSeasons.MaxLength = 9
         Me.txtTotalSeasons.Name = "txtTotalSeasons"
-        Me.txtTotalSeasons.Size = New System.Drawing.Size(120, 20)
+        Me.txtTotalSeasons.Size = New System.Drawing.Size(132, 20)
         Me.txtTotalSeasons.TabIndex = 34
         '
         'txtTotalEpisodes
@@ -366,13 +369,13 @@ Partial Class frmAddShow
         Me.txtTotalEpisodes.Location = New System.Drawing.Point(580, 275)
         Me.txtTotalEpisodes.MaxLength = 9
         Me.txtTotalEpisodes.Name = "txtTotalEpisodes"
-        Me.txtTotalEpisodes.Size = New System.Drawing.Size(120, 20)
+        Me.txtTotalEpisodes.Size = New System.Drawing.Size(132, 20)
         Me.txtTotalEpisodes.TabIndex = 35
         '
         'btnAdd
         '
         Me.btnAdd.BackColor = System.Drawing.Color.LightSalmon
-        Me.btnAdd.Location = New System.Drawing.Point(666, 542)
+        Me.btnAdd.Location = New System.Drawing.Point(661, 525)
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(114, 56)
         Me.btnAdd.TabIndex = 36
@@ -382,7 +385,7 @@ Partial Class frmAddShow
         'btnClear
         '
         Me.btnClear.BackColor = System.Drawing.Color.LightSalmon
-        Me.btnClear.Location = New System.Drawing.Point(60, 552)
+        Me.btnClear.Location = New System.Drawing.Point(60, 526)
         Me.btnClear.Name = "btnClear"
         Me.btnClear.Size = New System.Drawing.Size(114, 55)
         Me.btnClear.TabIndex = 37
@@ -391,19 +394,96 @@ Partial Class frmAddShow
         '
         'lblProceed
         '
-        Me.lblProceed.Location = New System.Drawing.Point(516, 550)
+        Me.lblProceed.Location = New System.Drawing.Point(511, 533)
         Me.lblProceed.Name = "lblProceed"
         Me.lblProceed.Size = New System.Drawing.Size(144, 41)
         Me.lblProceed.TabIndex = 38
         Me.lblProceed.Text = "Click 'Add Show' to proceed to Season Information"
         Me.lblProceed.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
+        'radFinDateNo
+        '
+        Me.radFinDateNo.AutoSize = True
+        Me.radFinDateNo.Location = New System.Drawing.Point(235, 9)
+        Me.radFinDateNo.Name = "radFinDateNo"
+        Me.radFinDateNo.Size = New System.Drawing.Size(39, 17)
+        Me.radFinDateNo.TabIndex = 43
+        Me.radFinDateNo.TabStop = True
+        Me.radFinDateNo.Text = "No"
+        Me.radFinDateNo.UseVisualStyleBackColor = True
+        '
+        'radFinDateYes
+        '
+        Me.radFinDateYes.AutoSize = True
+        Me.radFinDateYes.Location = New System.Drawing.Point(172, 9)
+        Me.radFinDateYes.Name = "radFinDateYes"
+        Me.radFinDateYes.Size = New System.Drawing.Size(43, 17)
+        Me.radFinDateYes.TabIndex = 42
+        Me.radFinDateYes.TabStop = True
+        Me.radFinDateYes.Text = "Yes"
+        Me.radFinDateYes.UseVisualStyleBackColor = True
+        '
+        'radRetDateNo
+        '
+        Me.radRetDateNo.AutoSize = True
+        Me.radRetDateNo.Location = New System.Drawing.Point(235, 12)
+        Me.radRetDateNo.Name = "radRetDateNo"
+        Me.radRetDateNo.Size = New System.Drawing.Size(39, 17)
+        Me.radRetDateNo.TabIndex = 1
+        Me.radRetDateNo.TabStop = True
+        Me.radRetDateNo.Text = "No"
+        Me.radRetDateNo.UseVisualStyleBackColor = True
+        '
+        'radRetDateYes
+        '
+        Me.radRetDateYes.AutoSize = True
+        Me.radRetDateYes.Location = New System.Drawing.Point(172, 12)
+        Me.radRetDateYes.Name = "radRetDateYes"
+        Me.radRetDateYes.Size = New System.Drawing.Size(43, 17)
+        Me.radRetDateYes.TabIndex = 0
+        Me.radRetDateYes.TabStop = True
+        Me.radRetDateYes.Text = "Yes"
+        Me.radRetDateYes.UseVisualStyleBackColor = True
+        '
+        'dtpReturn
+        '
+        Me.dtpReturn.CustomFormat = ""
+        Me.dtpReturn.Location = New System.Drawing.Point(75, 75)
+        Me.dtpReturn.Name = "dtpReturn"
+        Me.dtpReturn.Size = New System.Drawing.Size(200, 20)
+        Me.dtpReturn.TabIndex = 12
+        Me.dtpReturn.Visible = False
+        '
+        'panRetDate
+        '
+        Me.panRetDate.Controls.Add(Me.radRetDateNo)
+        Me.panRetDate.Controls.Add(Me.lblRetDate)
+        Me.panRetDate.Controls.Add(Me.radRetDateYes)
+        Me.panRetDate.Controls.Add(Me.dtpReturn)
+        Me.panRetDate.Location = New System.Drawing.Point(420, 364)
+        Me.panRetDate.Name = "panRetDate"
+        Me.panRetDate.Size = New System.Drawing.Size(300, 40)
+        Me.panRetDate.TabIndex = 44
+        '
+        'panFinDate
+        '
+        Me.panFinDate.Controls.Add(Me.radFinDateNo)
+        Me.panFinDate.Controls.Add(Me.lblFinaleDate)
+        Me.panFinDate.Controls.Add(Me.radFinDateYes)
+        Me.panFinDate.Controls.Add(Me.dtpFinale)
+        Me.panFinDate.Location = New System.Drawing.Point(420, 410)
+        Me.panFinDate.Name = "panFinDate"
+        Me.panFinDate.Size = New System.Drawing.Size(300, 40)
+        Me.panFinDate.TabIndex = 45
+        '
         'frmAddShow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Snow
-        Me.ClientSize = New System.Drawing.Size(838, 620)
+        Me.ClientSize = New System.Drawing.Size(838, 599)
+        Me.Controls.Add(Me.panFinDate)
+        Me.Controls.Add(Me.panRetDate)
         Me.Controls.Add(Me.lblProceed)
         Me.Controls.Add(Me.btnClear)
         Me.Controls.Add(Me.btnAdd)
@@ -417,13 +497,9 @@ Partial Class frmAddShow
         Me.Controls.Add(Me.cboAirStatus)
         Me.Controls.Add(Me.cboAirDay)
         Me.Controls.Add(Me.cboWatchStat)
-        Me.Controls.Add(Me.dtpReturn)
-        Me.Controls.Add(Me.dtpFinale)
         Me.Controls.Add(Me.txtIMDBID)
         Me.Controls.Add(Me.lblIMDB)
         Me.Controls.Add(Me.lblWatchStat)
-        Me.Controls.Add(Me.lblFinaleDate)
-        Me.Controls.Add(Me.lblRetDate)
         Me.Controls.Add(Me.lblTotalEpisodes)
         Me.Controls.Add(Me.lblTotalSeasons)
         Me.Controls.Add(Me.lblNextEpisode)
@@ -440,6 +516,10 @@ Partial Class frmAddShow
         Me.Controls.Add(Me.lblMainHeading)
         Me.Name = "frmAddShow"
         Me.Text = "frmAddShow"
+        Me.panRetDate.ResumeLayout(False)
+        Me.panRetDate.PerformLayout()
+        Me.panFinDate.ResumeLayout(False)
+        Me.panFinDate.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -465,7 +545,6 @@ Partial Class frmAddShow
     Friend WithEvents lblIMDB As Label
     Friend WithEvents txtIMDBID As TextBox
     Friend WithEvents dtpFinale As DateTimePicker
-    Friend WithEvents dtpReturn As DateTimePicker
     Friend WithEvents cboWatchStat As ComboBox
     Friend WithEvents cboAirDay As ComboBox
     Friend WithEvents cboAirStatus As ComboBox
@@ -479,4 +558,11 @@ Partial Class frmAddShow
     Friend WithEvents btnAdd As Button
     Friend WithEvents btnClear As Button
     Friend WithEvents lblProceed As Label
+    Friend WithEvents radFinDateNo As RadioButton
+    Friend WithEvents radFinDateYes As RadioButton
+    Friend WithEvents radRetDateNo As RadioButton
+    Friend WithEvents radRetDateYes As RadioButton
+    Friend WithEvents dtpReturn As DateTimePicker
+    Friend WithEvents panRetDate As Panel
+    Friend WithEvents panFinDate As Panel
 End Class

@@ -3,12 +3,30 @@
 Public Class frmAddShow
     Dim conn As New MySqlConnection
 
+    Public Sub connect()
+        Dim DatabaseName As String = "tracker"
+        Dim server As String = "127.0.0.1"
+        Dim userName As String = "root"
+        Dim password As String = "root1234"
+
+        If Not conn Is Nothing Then conn.Close()
+        conn.ConnectionString = String.Format("server={0}; user id={1}; password={2}; database={3}; pooling=false", server, userName, password, DatabaseName)
+        Try
+            conn.Open()
+            MsgBox("Connected")
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+        conn.Close()
+    End Sub
+
     Private Sub btnReturn_Click(sender As Object, e As EventArgs) Handles btnReturn.Click
         frmMain.Show()
         Me.Close()
     End Sub
 
     Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
+
         'Clears the form
         txtShowName.Text = ""
         cboAirDay.SelectedIndex = -1
@@ -24,6 +42,21 @@ Public Class frmAddShow
         txtTotalSeasons.Text = ""
         txtTotalEpisodes.Text = ""
         cboWatchStat.SelectedIndex = -1
+
+        radRetDateYes.Checked = False
+        radRetDateNo.Checked = False
+        radFinDateYes.Checked = False
+        radFinDateNo.Checked = False
+
+        dtpFinale.Visible = False
+        dtpFinale.Location = New Point(75, 75)
+        panFinDate.Size = New System.Drawing.Size(300, 40)
+
+        dtpReturn.Visible = False
+        dtpReturn.Location = New Point(75, 75)
+        panRetDate.Size = New System.Drawing.Size(300, 40)
+        panFinDate.Location = New Point(420, 410)
+
     End Sub
 
     Private Function validateForm() As Boolean
@@ -107,6 +140,16 @@ Public Class frmAddShow
             result = False
         End If
 
+        If radRetDateYes.Checked = False And radRetDateNo.Checked = False Then
+            msg = msg + "Return Date Known must be 'Yes' or 'No'" + vbNewLine
+            result = False
+        End If
+
+        If radFinDateYes.Checked = False And radFinDateNo.Checked = False Then
+            msg = msg + " Finale Date Known must be 'Yes' or 'No'" + vbNewLine
+            result = False
+        End If
+
         'If any validation fails, display all of the necessary error messages
         If result = False Then
             MsgBox(msg)
@@ -117,15 +160,17 @@ Public Class frmAddShow
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
         If validateForm() = True Then
+            connect()
             Try
                 conn.Open()
+                MsgBox("Connected")
             Catch ex As Exception
             End Try
 
             'SHOWS table data
-            Dim showName, IMDbID, watchStatus As String
-            Dim airDay, airStatus, duration, network, streamServ, currSeason, currEpisode, totalSeasons, totalEpisodes As Integer
-            Dim retDate, finDate As Date
+            Dim showName, IMDbID As String
+            Dim airDay, airStatus, duration, network, streamServ, currSeason, currEpisode, totalSeasons, totalEpisodes, watchStatus As Integer
+            Dim retDate, finDate, sqlDateFormat As String
 
             'Need to do CASE/SWITCH decoding:
             showName = txtShowName.Text
@@ -277,32 +322,63 @@ Public Class frmAddShow
                     streamServ = 15
             End Select
 
-            IMDbID = txtIMDBID.Text
-            currSeason = txtCurrSeason.Text
-            currEpisode = txtCurrEpisode.Text
-            totalSeasons = txtTotalSeasons.Text
-            totalEpisodes = txtTotalEpisodes.Text
-            retDate = Date.Parse(dtpReturn.Value)
-            finDate = Date.Parse(dtpFinale.Value)
+            'validating non-compulsory fields (setting to actual null values)
+            If txtIMDBID.Text = "" Then
+                IMDbID = vbNull
+            Else
+                IMDbID = txtIMDBID.Text
+            End If
 
-            'Have to figure out DATES (how to format properly so the value can be inserted properly) **************************
-            MsgBox(retDate)
-            MsgBox(finDate)
+            If txtCurrSeason.Text = "" Then
+                currSeason = vbNull
+            Else
+                currSeason = FormatNumber(txtCurrSeason.Text)
+            End If
+
+            If txtCurrEpisode.Text = "" Then
+                currEpisode = vbNull
+            Else
+                currEpisode = FormatNumber(txtCurrEpisode.Text)
+            End If
+
+            If txtTotalSeasons.Text = "" Then
+                totalSeasons = vbNull
+            Else
+                totalSeasons = FormatNumber(txtTotalSeasons.Text)
+            End If
+
+            If txtTotalEpisodes.Text = "" Then
+                totalEpisodes = vbNull
+            Else
+                totalEpisodes = FormatNumber(txtTotalEpisodes.Text)
+            End If
 
             Select Case cboWatchStat.Text
                 Case "Watching"
-                    watchStatus = "Y"
+                    watchStatus = 1 'Y
                 Case "Not Watching"
-                    watchStatus = "N"
+                    watchStatus = 2 'N
             End Select
+
+            'Formats the dates to strings in the mySQL date format (yyyy-mm-dd)
+            sqlDateFormat = "yyyy-MM-dd"
+            retDate = Format(CDate(Date.Parse(dtpReturn.Value)), sqlDateFormat)
+            finDate = Format(CDate(Date.Parse(dtpFinale.Value)), sqlDateFormat)
 
 
             Dim cmd As New MySqlCommand
             cmd.CommandText = "INSERT INTO SHOWS (show_name, air_status, watch_status, air_day, duration, network_id, service_id, season_up_to, episode_up_to, total_seasons, total_episodes, return_date, finale_date, imdb_id)
-                                VALUES(" & showName & ", " & airStatus & ", " & watchStatus & ", " & airDay & ", " & duration & ", " & network & ", " & streamServ & ", " & currSeason & ", " & currEpisode & ", " & totalSeasons & ", " & totalEpisodes & ", " & retDate & ", " & finDate & ", " & IMDbID & ")"
+                                VALUES('" & showName & "', " & airStatus & ", " & watchStatus & ", " & airDay & ", " & duration & ", " & network & ", " & streamServ & ", " & currSeason & ", " & currEpisode & ", " & totalSeasons & ", " & totalEpisodes & ", DATE'" & retDate & "', DATE'" & finDate & "', '" & IMDbID & "')"
             cmd.Connection = conn
+            MsgBox(cmd.CommandText)
             MsgBox(cmd.ExecuteNonQuery)
+            MsgBox("Row Inserted Successfully :)")
             conn.Close()
+
+            '@ 06/09/2016 - finished up here - Insert works successfully, connects to db on successful validation (probably doesn't need to be in this firm, can move it out most likely
+            'Future steps - move to next form, passing info across
+            'NOTE - db does not contain renew_status column -> need to create, and add data for all shows ... great.
+
 
             'ONCE ROW IS INSERTED PROPERLY, MOVE TO NEXT FORM, AND PASS RELEVANT INFO ACROSS
             '--------------------------------------------------------------------------------
@@ -321,5 +397,29 @@ Public Class frmAddShow
 
     End Sub
 
+    Private Sub radRetDateYes_CheckedChanged(sender As Object, e As EventArgs) Handles radRetDateYes.CheckedChanged
+        panFinDate.Location = New Point(420, 430)
+        panRetDate.Size = New System.Drawing.Size(300, 90)
+        dtpReturn.Location = New Point(75, 40)
+        dtpReturn.Visible = True
+    End Sub
 
+    Private Sub radRetDateNo_CheckedChanged(sender As Object, e As EventArgs) Handles radRetDateNo.CheckedChanged
+        dtpReturn.Visible = False
+        dtpReturn.Location = New Point(75, 75)
+        panRetDate.Size = New System.Drawing.Size(300, 40)
+        panFinDate.Location = New Point(420, 410)
+    End Sub
+
+    Private Sub radFinDateYes_CheckedChanged(sender As Object, e As EventArgs) Handles radFinDateYes.CheckedChanged
+        panFinDate.Size = New System.Drawing.Size(300, 90)
+        dtpFinale.Location = New Point(75, 40)
+        dtpFinale.Visible = True
+    End Sub
+
+    Private Sub radFinDateNo_CheckedChanged(sender As Object, e As EventArgs) Handles radFinDateNo.CheckedChanged
+        dtpFinale.Visible = False
+        dtpFinale.Location = New Point(75, 75)
+        panFinDate.Size = New System.Drawing.Size(300, 40)
+    End Sub
 End Class

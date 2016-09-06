@@ -23,6 +23,7 @@ Public Class frmMain
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         Try
             conn.Open()
+            MsgBox("Connected")
         Catch ex As Exception
         End Try
         Dim cmd As New MySqlCommand
