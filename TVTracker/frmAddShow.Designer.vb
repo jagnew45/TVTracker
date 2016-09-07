@@ -96,7 +96,7 @@ Partial Class frmAddShow
         Me.btnReturn.Location = New System.Drawing.Point(731, 9)
         Me.btnReturn.Name = "btnReturn"
         Me.btnReturn.Size = New System.Drawing.Size(95, 40)
-        Me.btnReturn.TabIndex = 15
+        Me.btnReturn.TabIndex = 21
         Me.btnReturn.Text = "Return to Main"
         Me.btnReturn.UseVisualStyleBackColor = False
         '
@@ -107,7 +107,7 @@ Partial Class frmAddShow
         Me.lblShowName.Location = New System.Drawing.Point(60, 135)
         Me.lblShowName.Name = "lblShowName"
         Me.lblShowName.Size = New System.Drawing.Size(131, 20)
-        Me.lblShowName.TabIndex = 16
+        Me.lblShowName.TabIndex = 100
         Me.lblShowName.Text = "Show Name"
         Me.lblShowName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
@@ -126,7 +126,7 @@ Partial Class frmAddShow
         Me.lblAirDay.Location = New System.Drawing.Point(60, 181)
         Me.lblAirDay.Name = "lblAirDay"
         Me.lblAirDay.Size = New System.Drawing.Size(131, 20)
-        Me.lblAirDay.TabIndex = 17
+        Me.lblAirDay.TabIndex = 101
         Me.lblAirDay.Text = "Air Day"
         Me.lblAirDay.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
@@ -137,7 +137,7 @@ Partial Class frmAddShow
         Me.lblAirStatus.Location = New System.Drawing.Point(60, 228)
         Me.lblAirStatus.Name = "lblAirStatus"
         Me.lblAirStatus.Size = New System.Drawing.Size(131, 20)
-        Me.lblAirStatus.TabIndex = 18
+        Me.lblAirStatus.TabIndex = 102
         Me.lblAirStatus.Text = "Air Status"
         Me.lblAirStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
@@ -148,7 +148,7 @@ Partial Class frmAddShow
         Me.lblDuration.Location = New System.Drawing.Point(60, 276)
         Me.lblDuration.Name = "lblDuration"
         Me.lblDuration.Size = New System.Drawing.Size(131, 20)
-        Me.lblDuration.TabIndex = 19
+        Me.lblDuration.TabIndex = 103
         Me.lblDuration.Text = "Duration (mins)"
         Me.lblDuration.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
@@ -159,7 +159,7 @@ Partial Class frmAddShow
         Me.lblNetwork.Location = New System.Drawing.Point(60, 324)
         Me.lblNetwork.Name = "lblNetwork"
         Me.lblNetwork.Size = New System.Drawing.Size(131, 20)
-        Me.lblNetwork.TabIndex = 20
+        Me.lblNetwork.TabIndex = 104
         Me.lblNetwork.Text = "Network"
         Me.lblNetwork.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
@@ -170,7 +170,7 @@ Partial Class frmAddShow
         Me.lblStreamServ.Location = New System.Drawing.Point(60, 376)
         Me.lblStreamServ.Name = "lblStreamServ"
         Me.lblStreamServ.Size = New System.Drawing.Size(131, 20)
-        Me.lblStreamServ.TabIndex = 21
+        Me.lblStreamServ.TabIndex = 105
         Me.lblStreamServ.Text = "Streaming Service"
         Me.lblStreamServ.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
@@ -277,7 +277,7 @@ Partial Class frmAddShow
         Me.dtpFinale.Location = New System.Drawing.Point(55, 91)
         Me.dtpFinale.Name = "dtpFinale"
         Me.dtpFinale.Size = New System.Drawing.Size(200, 20)
-        Me.dtpFinale.TabIndex = 13
+        Me.dtpFinale.TabIndex = 18
         Me.dtpFinale.Visible = False
         '
         'cboWatchStat
@@ -288,7 +288,7 @@ Partial Class frmAddShow
         Me.cboWatchStat.Location = New System.Drawing.Point(580, 322)
         Me.cboWatchStat.Name = "cboWatchStat"
         Me.cboWatchStat.Size = New System.Drawing.Size(132, 21)
-        Me.cboWatchStat.TabIndex = 14
+        Me.cboWatchStat.TabIndex = 12
         '
         'cboAirDay
         '
@@ -343,34 +343,34 @@ Partial Class frmAddShow
         'txtCurrSeason
         '
         Me.txtCurrSeason.Location = New System.Drawing.Point(580, 134)
-        Me.txtCurrSeason.MaxLength = 9
+        Me.txtCurrSeason.MaxLength = 3
         Me.txtCurrSeason.Name = "txtCurrSeason"
         Me.txtCurrSeason.Size = New System.Drawing.Size(132, 20)
-        Me.txtCurrSeason.TabIndex = 32
+        Me.txtCurrSeason.TabIndex = 8
         '
         'txtCurrEpisode
         '
         Me.txtCurrEpisode.Location = New System.Drawing.Point(580, 180)
-        Me.txtCurrEpisode.MaxLength = 9
+        Me.txtCurrEpisode.MaxLength = 4
         Me.txtCurrEpisode.Name = "txtCurrEpisode"
         Me.txtCurrEpisode.Size = New System.Drawing.Size(132, 20)
-        Me.txtCurrEpisode.TabIndex = 33
+        Me.txtCurrEpisode.TabIndex = 9
         '
         'txtTotalSeasons
         '
         Me.txtTotalSeasons.Location = New System.Drawing.Point(580, 227)
-        Me.txtTotalSeasons.MaxLength = 9
+        Me.txtTotalSeasons.MaxLength = 3
         Me.txtTotalSeasons.Name = "txtTotalSeasons"
         Me.txtTotalSeasons.Size = New System.Drawing.Size(132, 20)
-        Me.txtTotalSeasons.TabIndex = 34
+        Me.txtTotalSeasons.TabIndex = 10
         '
         'txtTotalEpisodes
         '
         Me.txtTotalEpisodes.Location = New System.Drawing.Point(580, 275)
-        Me.txtTotalEpisodes.MaxLength = 9
+        Me.txtTotalEpisodes.MaxLength = 4
         Me.txtTotalEpisodes.Name = "txtTotalEpisodes"
         Me.txtTotalEpisodes.Size = New System.Drawing.Size(132, 20)
-        Me.txtTotalEpisodes.TabIndex = 35
+        Me.txtTotalEpisodes.TabIndex = 11
         '
         'btnAdd
         '
@@ -378,7 +378,7 @@ Partial Class frmAddShow
         Me.btnAdd.Location = New System.Drawing.Point(661, 525)
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(114, 56)
-        Me.btnAdd.TabIndex = 36
+        Me.btnAdd.TabIndex = 19
         Me.btnAdd.Text = "Add Show"
         Me.btnAdd.UseVisualStyleBackColor = False
         '
@@ -388,7 +388,7 @@ Partial Class frmAddShow
         Me.btnClear.Location = New System.Drawing.Point(60, 526)
         Me.btnClear.Name = "btnClear"
         Me.btnClear.Size = New System.Drawing.Size(114, 55)
-        Me.btnClear.TabIndex = 37
+        Me.btnClear.TabIndex = 20
         Me.btnClear.Text = "Clear Form"
         Me.btnClear.UseVisualStyleBackColor = False
         '
@@ -407,7 +407,7 @@ Partial Class frmAddShow
         Me.radFinDateNo.Location = New System.Drawing.Point(235, 9)
         Me.radFinDateNo.Name = "radFinDateNo"
         Me.radFinDateNo.Size = New System.Drawing.Size(39, 17)
-        Me.radFinDateNo.TabIndex = 43
+        Me.radFinDateNo.TabIndex = 17
         Me.radFinDateNo.TabStop = True
         Me.radFinDateNo.Text = "No"
         Me.radFinDateNo.UseVisualStyleBackColor = True
@@ -418,7 +418,7 @@ Partial Class frmAddShow
         Me.radFinDateYes.Location = New System.Drawing.Point(172, 9)
         Me.radFinDateYes.Name = "radFinDateYes"
         Me.radFinDateYes.Size = New System.Drawing.Size(43, 17)
-        Me.radFinDateYes.TabIndex = 42
+        Me.radFinDateYes.TabIndex = 16
         Me.radFinDateYes.TabStop = True
         Me.radFinDateYes.Text = "Yes"
         Me.radFinDateYes.UseVisualStyleBackColor = True
@@ -429,7 +429,7 @@ Partial Class frmAddShow
         Me.radRetDateNo.Location = New System.Drawing.Point(235, 12)
         Me.radRetDateNo.Name = "radRetDateNo"
         Me.radRetDateNo.Size = New System.Drawing.Size(39, 17)
-        Me.radRetDateNo.TabIndex = 1
+        Me.radRetDateNo.TabIndex = 14
         Me.radRetDateNo.TabStop = True
         Me.radRetDateNo.Text = "No"
         Me.radRetDateNo.UseVisualStyleBackColor = True
@@ -440,7 +440,7 @@ Partial Class frmAddShow
         Me.radRetDateYes.Location = New System.Drawing.Point(172, 12)
         Me.radRetDateYes.Name = "radRetDateYes"
         Me.radRetDateYes.Size = New System.Drawing.Size(43, 17)
-        Me.radRetDateYes.TabIndex = 0
+        Me.radRetDateYes.TabIndex = 13
         Me.radRetDateYes.TabStop = True
         Me.radRetDateYes.Text = "Yes"
         Me.radRetDateYes.UseVisualStyleBackColor = True
@@ -451,7 +451,7 @@ Partial Class frmAddShow
         Me.dtpReturn.Location = New System.Drawing.Point(75, 75)
         Me.dtpReturn.Name = "dtpReturn"
         Me.dtpReturn.Size = New System.Drawing.Size(200, 20)
-        Me.dtpReturn.TabIndex = 12
+        Me.dtpReturn.TabIndex = 15
         Me.dtpReturn.Visible = False
         '
         'panRetDate
