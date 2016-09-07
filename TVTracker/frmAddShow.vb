@@ -169,7 +169,7 @@ Public Class frmAddShow
 
             'SHOWS table data
             Dim showName, IMDbID As String
-            Dim airDay, airStatus, duration, network, streamServ, currSeason, currEpisode, totalSeasons, totalEpisodes, watchStatus As Integer
+            Dim showID, airDay, airStatus, duration, network, streamServ, currSeason, currEpisode, totalSeasons, totalEpisodes, watchStatus As Integer
             Dim retDate, finDate, sqlDateFormat As String
 
             'Need to do CASE/SWITCH decoding:
@@ -365,6 +365,7 @@ Public Class frmAddShow
             retDate = Format(CDate(Date.Parse(dtpReturn.Value)), sqlDateFormat)
             finDate = Format(CDate(Date.Parse(dtpFinale.Value)), sqlDateFormat)
 
+            '******* below statement is vulnerable to sql injections - google "parameterised queries" and try to implement that instead
 
             Dim cmd As New MySqlCommand
             cmd.CommandText = "INSERT INTO SHOWS (show_name, air_status, watch_status, air_day, duration, network_id, service_id, season_up_to, episode_up_to, total_seasons, total_episodes, return_date, finale_date, imdb_id)
@@ -373,7 +374,7 @@ Public Class frmAddShow
             MsgBox(cmd.CommandText)
             MsgBox(cmd.ExecuteNonQuery)
             MsgBox("Row Inserted Successfully :)")
-            conn.Close()
+            'conn.Close()
 
             '@ 06/09/2016 - finished up here - Insert works successfully, connects to db on successful validation (probably doesn't need to be in this firm, can move it out most likely
             'Future steps - move to next form, passing info across
@@ -384,15 +385,40 @@ Public Class frmAddShow
             '--------------------------------------------------------------------------------
             'Shows the entered VALIDATED show name on the Add Season Information screen
 
+
+            '--------------------------------------------------------------------------------
+            '*** create new connection/query
+            cmd.CommandText = ""
+            cmd.Connection = conn
+            showID = cmd.ExecuteScalar()
+            '*** SELECT show_id from shows WHERE show_name = showName
+            '*** user cmd.ExecuteScalar() to store SELECT value in a variable
+            '*** Then pass the show id to the frmSeasonInfo form
+
             'Information to pass across:
-            'Show name, Total seasons - so you can validate the season information that has been added
-            If txtShowName.Text = "" Then
-                MsgBox("Show Name must have a value")
-                ' Else
-                '   frmSeasonInfo.lblShowName.Text = txtShowName.Text
-                '    frmSeasonInfo.Show()
-                '    Me.Hide()
-            End If
+            'Show id, Show name, Total seasons - so you can validate the season information that has been added
+
+            'Assign the frmSeasonInfo label the new Name of the show...
+            frmSeasonInfo.lblShowName.Text = showName
+
+            '*** create a label to show the total number of seasons
+            frmSeasonInfo.lblTotalSeasons.Text = totalSeasons
+
+            '*** create an INVISIBLE label to store the show id
+            frmSeasonInfo.lblShowID.Text = showID
+
+            '*** on frmSeasonInfo form:     lblSeasonIncrement.Text = [initialise at 1, loop process until increment = total]
+            'lblSeasonRemaining.Text = TotalSeasons - Increment
+            'insert into seasons (show_id, season_id, ep_count) VALUES (lblShowID.Text, lblSeasonIncrement.Text, txtEpsInSeason.Text);
+
+            '-------------------------------------------------------------------
+
+            'Show the frmSeasonInfo form
+            frmSeasonInfo.Show()
+
+            ' Hide the add show form
+            Me.Hide()
+
         End If
 
     End Sub
