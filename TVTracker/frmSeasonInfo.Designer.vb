@@ -25,8 +25,8 @@ Partial Class frmSeasonInfo
         Me.lblSubHeading = New System.Windows.Forms.Label()
         Me.lblMainHeading = New System.Windows.Forms.Label()
         Me.lblMessage = New System.Windows.Forms.Label()
-        Me.txtSeasonNum = New System.Windows.Forms.TextBox()
         Me.lblSeasonNum = New System.Windows.Forms.Label()
+        Me.lblSeasonNumTitle = New System.Windows.Forms.Label()
         Me.txtEpisodeCount = New System.Windows.Forms.TextBox()
         Me.lblEpisodeCount = New System.Windows.Forms.Label()
         Me.btnAddInfo = New System.Windows.Forms.Button()
@@ -68,24 +68,26 @@ Partial Class frmSeasonInfo
         Me.lblMessage.Text = "Please add all available season information"
         Me.lblMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'txtSeasonNum
-        '
-        Me.txtSeasonNum.Location = New System.Drawing.Point(307, 219)
-        Me.txtSeasonNum.MaxLength = 40
-        Me.txtSeasonNum.Name = "txtSeasonNum"
-        Me.txtSeasonNum.Size = New System.Drawing.Size(119, 20)
-        Me.txtSeasonNum.TabIndex = 35
-        '
         'lblSeasonNum
         '
-        Me.lblSeasonNum.BackColor = System.Drawing.SystemColors.Control
-        Me.lblSeasonNum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lblSeasonNum.Location = New System.Drawing.Point(57, 219)
+        Me.lblSeasonNumTitle.BackColor = System.Drawing.SystemColors.Control
+        Me.lblSeasonNumTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lblSeasonNum.Location = New System.Drawing.Point(307, 219)
         Me.lblSeasonNum.Name = "lblSeasonNum"
         Me.lblSeasonNum.Size = New System.Drawing.Size(222, 20)
-        Me.lblSeasonNum.TabIndex = 36
-        Me.lblSeasonNum.Text = "Season Number:"
-        Me.lblSeasonNum.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.lblSeasonNum.TabIndex = 35
+        Me.lblSeasonNumTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'lblSeasonNumTitle
+        '
+        Me.lblSeasonNumTitle.BackColor = System.Drawing.SystemColors.Control
+        Me.lblSeasonNumTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lblSeasonNumTitle.Location = New System.Drawing.Point(57, 219)
+        Me.lblSeasonNumTitle.Name = "lblSeasonNumTitle"
+        Me.lblSeasonNumTitle.Size = New System.Drawing.Size(222, 20)
+        Me.lblSeasonNumTitle.TabIndex = 36
+        Me.lblSeasonNumTitle.Text = "Season Number:"
+        Me.lblSeasonNumTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'txtEpisodeCount
         '
