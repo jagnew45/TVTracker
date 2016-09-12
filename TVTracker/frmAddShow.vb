@@ -378,7 +378,7 @@ Public Class frmAddShow
 
             '@ 06/09/2016 - finished up here - Insert works successfully, connects to db on successful validation (probably doesn't need to be in this firm, can move it out most likely
             'Future steps - move to next form, passing info across
-            'NOTE - db does not contain renew_status column -> need to create, and add data for all shows ... great.
+            'NOTE - db does not contain RENEW_STATUS column -> need to create, and add data for all shows ... great.
 
 
             'ONCE ROW IS INSERTED PROPERLY, MOVE TO NEXT FORM, AND PASS RELEVANT INFO ACROSS
@@ -388,11 +388,11 @@ Public Class frmAddShow
 
             '--------------------------------------------------------------------------------
             '*** create new connection/query
-            cmd.CommandText = ""
+            cmd.CommandText = "SELECT show_id FROM shows WHERE show_name = '" & showName & "'"
             cmd.Connection = conn
             showID = cmd.ExecuteScalar()
             '*** SELECT show_id from shows WHERE show_name = showName
-            '*** user cmd.ExecuteScalar() to store SELECT value in a variable
+            '*** use cmd.ExecuteScalar() to store SELECT value in a variable
             '*** Then pass the show id to the frmSeasonInfo form
 
             'Information to pass across:
@@ -402,7 +402,7 @@ Public Class frmAddShow
             frmSeasonInfo.lblShowName.Text = showName
 
             '*** create a label to show the total number of seasons
-            frmSeasonInfo.lblTotalSeasons.Text = totalSeasons
+            frmSeasonInfo.lblTotal.Text = totalSeasons
 
             '*** create an INVISIBLE label to store the show id
             frmSeasonInfo.lblShowID.Text = showID

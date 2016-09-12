@@ -5,10 +5,11 @@
     Private Sub frmSeasonInfo_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Initialises the array counter
         i = 0
+
+        lblSeasonsRem.Text = lblTotal.Text
     End Sub
 
-    Private Function validate() As Boolean
-
+    Private Overloads Function validate() As Boolean
         Dim msg As String
         Dim result As Boolean = True
         msg = "The form cannot submit until the following errors are fixed: " + vbNewLine
@@ -29,30 +30,36 @@
     End Function
 
 
+
     Private Sub btnAddInfo_Click(sender As Object, e As EventArgs) Handles btnAddInfo.Click
         'if validation is successful, store values in arraylist
         If validate() = True Then
             'Values read in on one line (can be immediately used for INSERT - just need to add show_id to the front)
-            list.Add(lblSeasonNum.Text & ", " & txtEpisodeCount.Text) 
-        End If
-        
-       
+            list.Add(lblSeasonNum.Text & ", " & txtEpisodeCount.Text)
 
+
+
+            'IF SUCCESSFUL
+            'Decrement Seasons Remaining
+            Dim j As Integer
+            Integer.TryParse(lblSeasonsRem.Text, j)
+            lblSeasonsRem.Text = j - 1
+
+        End If
     End Sub
 
-'This button should go to the next screen; NOT back to the addshow screen
-    Private Sub btnReturntoAdd_Click(sender As Object, e As EventArgs) Handles btnReturntoAdd.Click
-        
+
+    Private Sub btnProceed_Click(sender As Object, e As EventArgs) Handles btnProceed.Click
         'NOTE*** This should be a collective insert loop once the user is ready to proceed
         Dim line As String
-        For Each line In list
+        For Each line In List
             MsgBox(line)
             'INSERT ...
         Next
-    
-    'ONly once the inserts are successful, should this proceed the user to the next screen... confirmation?
-    'If you're doing a confrimation screen, then all of the data should be stored in variables until it is confirmed...
-    
+
+        'ONly once the inserts are successful, should this proceed the user to the next screen... confirmation?
+        'If you're doing a confrimation screen, then all of the data should be stored in variables until it is confirmed...
+
         frmAddShow.Show()
         Me.Close()
     End Sub
