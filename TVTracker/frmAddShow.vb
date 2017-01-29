@@ -4,7 +4,7 @@ Public Class frmAddShow
     Dim conn As New MySqlConnection
 
     Public Sub connect()
-        Dim DatabaseName As String = "tracker"
+        Dim DatabaseName As String = "tv_tracker"
         Dim server As String = "127.0.0.1"
         Dim userName As String = "root"
         Dim password As String = "root1234"
@@ -13,7 +13,7 @@ Public Class frmAddShow
         conn.ConnectionString = String.Format("server={0}; user id={1}; password={2}; database={3}; pooling=false", server, userName, password, DatabaseName)
         Try
             conn.Open()
-            MsgBox("Connected")
+            'MsgBox("Connected")
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -62,14 +62,23 @@ Public Class frmAddShow
     Private Function validateForm() As Boolean
         Dim msg As String
         Dim result As Boolean
+
+        Dim seasUpTo, epUpTo, totSeasons, totEpisodes As Integer
+
         result = True
         msg = "The form cannot submit until the following errors are fixed: " + vbNewLine
 
+        '----------------------------------------------------------------------
+        'SHOW NAME
+        '----------------------------------------------------------------------
         If txtShowName.Text = "" Then
             msg = msg + "Show Name cannot be empty" + vbNewLine
             result = False
         End If
 
+        '----------------------------------------------------------------------
+        'AIRING INFORMATION
+        '----------------------------------------------------------------------
         If cboAirDay.Text = "" Then
             msg = msg + "Air Day cannot be empty" + vbNewLine
             result = False
@@ -95,6 +104,10 @@ Public Class frmAddShow
             result = False
         End If
 
+        '----------------------------------------------------------------------
+        'IMDB ID
+        '----------------------------------------------------------------------
+
         'IMDb ID can be null, but if it has a value, it MUST be 9 characters long
         If txtIMDBID.Text <> "" Then
             If txtIMDBID.TextLength < 9 Then
@@ -103,13 +116,22 @@ Public Class frmAddShow
             End If
         End If
 
+        '----------------------------------------------------------------------
+        'SEASON INFORMATION
+        '----------------------------------------------------------------------
         'Season Up To can be null, but if it has a value, it MUST be numerical
         If txtCurrSeason.Text <> "" Then
             If IsNumeric(txtCurrSeason.Text) = False Then
                 msg = msg + "Season Up To MUST be a NUMBER" + vbNewLine
                 result = False
             End If
+
+            Integer.TryParse(txtCurrSeason.Text, seasUpTo)
+            If seasUpTo <= 0 Then
+                msg = msg + "Season Up To MUST be a number greater than 0" + vbNewLine
+            End If
         End If
+
 
         'Episode Up To can be null, but if it has a value, it MUST be numerical
         If txtCurrEpisode.Text <> "" Then
@@ -117,13 +139,24 @@ Public Class frmAddShow
                 msg = msg + "Episode Up To MUST be a NUMBER" + vbNewLine
                 result = False
             End If
+
+            Integer.TryParse(txtCurrEpisode.Text, epUpTo)
+            If epUpTo <= 0 Then
+                msg = msg + "Episode Up To MUST be a number greater than 0" + vbNewLine
+            End If
         End If
+
 
         'Total Seasons can be null, but if it has a value, it MUST be numerical
         If txtTotalSeasons.Text <> "" Then
             If IsNumeric(txtTotalSeasons.Text) = False Then
                 msg = msg + "Total Seasons MUST be a NUMBER" + vbNewLine
                 result = False
+            End If
+
+            Integer.TryParse(txtTotalSeasons.Text, totSeasons)
+            If totSeasons <= 0 Then
+                msg = msg + "Total Seasons MUST be a number greater than 0" + vbNewLine
             End If
         End If
 
@@ -133,8 +166,16 @@ Public Class frmAddShow
                 msg = msg + "Total Episodes MUST be a NUMBER" + vbNewLine
                 result = False
             End If
+
+            Integer.TryParse(txtTotalEpisodes.Text, totEpisodes)
+            If totEpisodes <= 0 Then
+                msg = msg + "Total Episodes MUST be a number greater than 0" + vbNewLine
+            End If
         End If
 
+        '----------------------------------------------------------------------
+        'WATCH STATUS AND DATES
+        '----------------------------------------------------------------------
         If cboWatchStat.Text = "" Then
             msg = msg + "Watching Status cannot be empty" + vbNewLine
             result = False
@@ -163,7 +204,6 @@ Public Class frmAddShow
             connect()
             Try
                 conn.Open()
-                MsgBox("Connected")
             Catch ex As Exception
             End Try
 

@@ -96,7 +96,7 @@ Partial Class frmAddShow
         Me.btnReturn.Location = New System.Drawing.Point(731, 9)
         Me.btnReturn.Name = "btnReturn"
         Me.btnReturn.Size = New System.Drawing.Size(95, 40)
-        Me.btnReturn.TabIndex = 21
+        Me.btnReturn.TabIndex = 23
         Me.btnReturn.Text = "Return to Main"
         Me.btnReturn.UseVisualStyleBackColor = False
         '
@@ -277,7 +277,7 @@ Partial Class frmAddShow
         Me.dtpFinale.Location = New System.Drawing.Point(55, 91)
         Me.dtpFinale.Name = "dtpFinale"
         Me.dtpFinale.Size = New System.Drawing.Size(200, 20)
-        Me.dtpFinale.TabIndex = 18
+        Me.dtpFinale.TabIndex = 20
         Me.dtpFinale.Visible = False
         '
         'cboWatchStat
@@ -378,7 +378,7 @@ Partial Class frmAddShow
         Me.btnAdd.Location = New System.Drawing.Point(661, 525)
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(114, 56)
-        Me.btnAdd.TabIndex = 19
+        Me.btnAdd.TabIndex = 21
         Me.btnAdd.Text = "Add Show"
         Me.btnAdd.UseVisualStyleBackColor = False
         '
@@ -388,7 +388,7 @@ Partial Class frmAddShow
         Me.btnClear.Location = New System.Drawing.Point(60, 526)
         Me.btnClear.Name = "btnClear"
         Me.btnClear.Size = New System.Drawing.Size(114, 55)
-        Me.btnClear.TabIndex = 20
+        Me.btnClear.TabIndex = 22
         Me.btnClear.Text = "Clear Form"
         Me.btnClear.UseVisualStyleBackColor = False
         '
@@ -407,7 +407,7 @@ Partial Class frmAddShow
         Me.radFinDateNo.Location = New System.Drawing.Point(235, 9)
         Me.radFinDateNo.Name = "radFinDateNo"
         Me.radFinDateNo.Size = New System.Drawing.Size(39, 17)
-        Me.radFinDateNo.TabIndex = 17
+        Me.radFinDateNo.TabIndex = 18
         Me.radFinDateNo.TabStop = True
         Me.radFinDateNo.Text = "No"
         Me.radFinDateNo.UseVisualStyleBackColor = True
@@ -418,7 +418,7 @@ Partial Class frmAddShow
         Me.radFinDateYes.Location = New System.Drawing.Point(172, 9)
         Me.radFinDateYes.Name = "radFinDateYes"
         Me.radFinDateYes.Size = New System.Drawing.Size(43, 17)
-        Me.radFinDateYes.TabIndex = 16
+        Me.radFinDateYes.TabIndex = 17
         Me.radFinDateYes.TabStop = True
         Me.radFinDateYes.Text = "Yes"
         Me.radFinDateYes.UseVisualStyleBackColor = True
@@ -429,7 +429,7 @@ Partial Class frmAddShow
         Me.radRetDateNo.Location = New System.Drawing.Point(235, 12)
         Me.radRetDateNo.Name = "radRetDateNo"
         Me.radRetDateNo.Size = New System.Drawing.Size(39, 17)
-        Me.radRetDateNo.TabIndex = 14
+        Me.radRetDateNo.TabIndex = 15
         Me.radRetDateNo.TabStop = True
         Me.radRetDateNo.Text = "No"
         Me.radRetDateNo.UseVisualStyleBackColor = True
@@ -440,7 +440,7 @@ Partial Class frmAddShow
         Me.radRetDateYes.Location = New System.Drawing.Point(172, 12)
         Me.radRetDateYes.Name = "radRetDateYes"
         Me.radRetDateYes.Size = New System.Drawing.Size(43, 17)
-        Me.radRetDateYes.TabIndex = 13
+        Me.radRetDateYes.TabIndex = 14
         Me.radRetDateYes.TabStop = True
         Me.radRetDateYes.Text = "Yes"
         Me.radRetDateYes.UseVisualStyleBackColor = True
@@ -451,7 +451,7 @@ Partial Class frmAddShow
         Me.dtpReturn.Location = New System.Drawing.Point(75, 75)
         Me.dtpReturn.Name = "dtpReturn"
         Me.dtpReturn.Size = New System.Drawing.Size(200, 20)
-        Me.dtpReturn.TabIndex = 15
+        Me.dtpReturn.TabIndex = 19
         Me.dtpReturn.Visible = False
         '
         'panRetDate
@@ -463,7 +463,7 @@ Partial Class frmAddShow
         Me.panRetDate.Location = New System.Drawing.Point(420, 364)
         Me.panRetDate.Name = "panRetDate"
         Me.panRetDate.Size = New System.Drawing.Size(300, 40)
-        Me.panRetDate.TabIndex = 44
+        Me.panRetDate.TabIndex = 13
         '
         'panFinDate
         '
@@ -474,7 +474,7 @@ Partial Class frmAddShow
         Me.panFinDate.Location = New System.Drawing.Point(420, 410)
         Me.panFinDate.Name = "panFinDate"
         Me.panFinDate.Size = New System.Drawing.Size(300, 40)
-        Me.panFinDate.TabIndex = 45
+        Me.panFinDate.TabIndex = 16
         '
         'frmAddShow
         '

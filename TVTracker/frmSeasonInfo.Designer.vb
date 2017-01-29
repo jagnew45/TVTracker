@@ -99,11 +99,12 @@ Partial Class frmSeasonInfo
         'lblSeasonNum
         '
         Me.lblSeasonNum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lblSeasonNum.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblSeasonNum.Location = New System.Drawing.Point(258, 41)
         Me.lblSeasonNum.Name = "lblSeasonNum"
         Me.lblSeasonNum.Size = New System.Drawing.Size(73, 20)
         Me.lblSeasonNum.TabIndex = 2
-        Me.lblSeasonNum.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.lblSeasonNum.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'lblSeasonNumHeading
         '
